@@ -5,11 +5,23 @@ interface Props {
   markdown: string;
   /** 圖的高度（CSS 值），預設 560px */
   height?: string;
+  /** 背景色（CSS 值），預設沿用站台背景色 */
+  background?: string;
+  /** 節點文字顏色（CSS 值），預設淺色模式深灰、深色模式淺灰（跟隨站台主題） */
+  textColor?: string;
 }
-const { markdown, height = "560px" } = Astro.props;
+const {
+  markdown,
+  height = "560px",
+  background = "var(--sl-color-bg)",
+  textColor = "var(--sl-color-gray-2)",
+} = Astro.props;
 ---
 
-<div class="markmap-wrapper" style={`height:${height}`}>
+<div
+  class="markmap-wrapper"
+  style={`height:${height}; background:${background}; --markmap-text-color:${textColor};`}
+>
   <svg class="markmap" data-markdown={markdown}></svg>
 </div>
 
@@ -20,7 +32,6 @@ const { markdown, height = "560px" } = Astro.props;
     border: 1px solid var(--sl-color-gray-5);
     border-radius: 0.5rem;
     overflow: hidden;
-    background: var(--sl-color-bg);
   }
   .markmap {
     width: 100%;
@@ -39,7 +50,18 @@ const { markdown, height = "560px" } = Astro.props;
       if (svg.dataset.rendered) return;
       const md = svg.getAttribute("data-markdown") ?? "";
       const { root } = transformer.transform(md);
-      Markmap.create(svg, { autoFit: true, duration: 400 }, root);
+      Markmap.create(
+        svg,
+        {
+          autoFit: true,
+          duration: 400,
+          // markmap 預設會在 SVG 內注入固定的 --markmap-text-color: #333，
+          // 蓋掉外層 wrapper 設定的顏色。這裡用「自我參照」讓該變數失效，
+          // 強制改用繼承自 .markmap-wrapper 的值（會隨站台明暗主題切換）。
+          style: () => ".markmap{--markmap-text-color:var(--markmap-text-color);}",
+        },
+        root,
+      );
       svg.dataset.rendered = "true";
     });
   }

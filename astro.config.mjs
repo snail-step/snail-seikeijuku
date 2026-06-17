@@ -10,6 +10,8 @@ export default defineConfig({
   integrations: [
     starlight({
       title: '蝸牛政經塾',
+      // 首頁專屬樣式（限制內容最大寬度）
+      customCss: ['./src/styles/home.css'],
       // 介面語言設為繁體中文
       defaultLocale: 'root',
       locales: {
@@ -22,16 +24,28 @@ export default defineConfig({
       plugins: [
         lucode({
           navLinks: [
-            { label: '文章', link: '/posts/hello-world/' },
+            { label: '文章', link: '/posts/knowledge-map/' },
           ],
           footerText: '© 2026 蝸牛政經塾',
         }),
       ],
-      // 側邊欄：自動把 posts 目錄底下的 markdown 列出來
+      // 側邊欄：文章列表。資料夾分類需明確指定中文標籤，
+      // 其餘未分類文章維持手動列出。
       sidebar: [
         {
           label: '文章',
-          items: [{ autogenerate: { directory: 'posts' } }],
+          items: [
+            // 未分類文章（posts 目錄下的單篇 markdown）
+            'posts/knowledge-map',
+            'posts/spcx',
+            'posts/spcx-spcxd',
+            'posts/moving-average',
+            // 分類資料夾：名詞解釋（posts/noun-explanation 內自動列出）
+            {
+              label: '名詞解釋',
+              items: [{ autogenerate: { directory: 'posts/noun-explanation' } }],
+            },
+          ],
         },
       ],
     }),

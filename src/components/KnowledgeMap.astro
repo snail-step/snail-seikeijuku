@@ -1,0 +1,34 @@
+---
+// 全站知識地圖：所有文章的關係分類。
+// 大綱集中寫在這裡，首頁與文章頁共用，新增文章時只要改這一處。
+import Markmap from "./Markmap.astro";
+
+interface Props {
+  /** 圖的高度（CSS 值），預設沿用 Markmap 的 560px */
+  height?: string;
+  /** 背景色（CSS 值），預設沿用站台背景色 */
+  background?: string;
+  /** 節點文字顏色（CSS 值），預設沿用 markmap 內建顏色 */
+  textColor?: string;
+}
+const { height, background, textColor } = Astro.props;
+
+const markdown = `# 蝸牛政經塾
+## 入門
+- [第一篇文章](/posts/knowledge-map/)
+## 美股與新標的
+### 太空產業
+- [SPCX 上市資訊與板塊影響](/posts/spcx/)
+### 現貨 vs 代幣 vs 合約
+- [SPCX / SPCXD / SPCXUSDT 比較](/posts/spcx-spcxd/)
+## 技術分析
+### 趨勢判讀
+- [移動平均線：週線、月線、季線](/posts/moving-average/)
+## 交易制度與工具
+### 槓桿與保證金
+- [融資融券：維持率與斷頭](/posts/noun-explanation/margin-trading/)
+### 跨市場連動
+- [ADR 存託憑證：如何影響台股](/posts/noun-explanation/adr/)`;
+---
+
+<Markmap markdown={markdown} height={height} background={background} textColor={textColor} />

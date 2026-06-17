@@ -1,0 +1,16 @@
+/* 首頁專屬寬度限制（template: splash），不影響其他文章頁面 */
+.hero,
+.home-content {
+	max-width: 60rem;
+	margin-inline: auto;
+}
+
+/* 手機螢幕：取消寬度限制，維持滿版顯示 */
+@media (max-width: 50rem) {
+
+	.hero,
+	.home-content {
+		max-width: 100%;
+		padding: 0 16px;
+	}
+}

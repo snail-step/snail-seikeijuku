@@ -3,11 +3,10 @@ title: 蝸牛政經塾
 description: 蝸牛政經塾 — 用 Markdown 寫作的政經評論部落格。
 template: splash
 hero:
-  layout: centered
   tagline: 慢慢讀、慢慢想。政治與經濟的觀察筆記。
   actions:
     - text: 開始閱讀
-      link: /posts/hello-world/
+      link: /posts/knowledge-map/
       icon: right-arrow
       variant: primary
     - text: GitHub
@@ -16,30 +15,48 @@ hero:
       variant: minimal
 ---
 
-import Markmap from "../../components/Markmap.astro";
+import { CardGrid, LinkCard } from "@astrojs/starlight/components";
+import KnowledgeMap from "../../components/KnowledgeMap.astro";
 
-歡迎來到我的部落格。所有文章都放在 `src/content/docs/posts/` 底下，
-只要新增一個 `.md` 檔案就會自動出現在側邊欄。
+<div class="home-content">
 
-## 知識地圖：所有文章的關係分類
+## 最新文章
 
-<Markmap
-  markdown={`# 蝸牛政經塾
-## 入門
-- [第一篇文章](/posts/hello-world/)
-## 美股與新標的
-### 太空產業
-- [SPCX 上市資訊與板塊影響](/posts/spcx/)
-### 現貨 vs 代幣 vs 合約
-- [SPCX / SPCXD / SPCXUSDT 比較](/posts/spcx-spcxd/)
-## 技術分析
-### 趨勢判讀
-- [移動平均線：週線、月線、季線](/posts/moving-average/)
-## 交易制度與工具
-### 槓桿與保證金
-- [融資融券：維持率與斷頭](/posts/none-explanation/margin-trading/)
-### 跨市場連動
-- [ADR 存託憑證：如何影響台股](/posts/none-explanation/adr/)`}
-/>
+<CardGrid>
+  <LinkCard
+    title="第一篇文章"
+    description="知識地圖：一覽所有文章的關係與分類。"
+    href="/posts/knowledge-map/"
+  />
+  <LinkCard
+    title="SPCX 上市資訊與板塊影響"
+    description="SPCX 上市基本資訊、現況與相關投資標的、板塊影響。"
+    href="/posts/spcx/"
+  />
+  <LinkCard
+    title="SPCX / SPCXD / SPCXUSDT 比較"
+    description="現貨、數位代幣化憑證與永續合約的手續費、稅務與風險橫向比較。"
+    href="/posts/spcx-spcxd/"
+  />
+  <LinkCard
+    title="移動平均線：週線、月線、季線"
+    description="解析週線、月線、季線的含義、市場心理與交易策略。"
+    href="/posts/moving-average/"
+  />
+  <LinkCard
+    title="融資融券：維持率與斷頭"
+    description="融資的概念、融資維持率與斷頭機制的白話解釋。"
+    href="/posts/noun-explanation/margin-trading/"
+  />
+  <LinkCard
+    title="ADR 存託憑證：如何影響台股"
+    description="ADR 的定義與其在台股休市期間對台股的連動影響。"
+    href="/posts/noun-explanation/adr/"
+  />
+</CardGrid>
 
-> 提示：心智圖可以點擊節點展開／收合、滾輪縮放、拖曳移動。新增文章時，只要在上方大綱補一行即可。
+## 知識地圖
+
+<KnowledgeMap />
+
+</div>
