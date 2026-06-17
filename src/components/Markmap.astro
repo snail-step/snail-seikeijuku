@@ -1,0 +1,50 @@
+---
+// 用法：在 .mdx 中傳入 markdown 大綱字串，會渲染成可互動的心智圖。
+// <Markmap markdown={`- 根節點\n  - 子節點`} />
+interface Props {
+  markdown: string;
+  /** 圖的高度（CSS 值），預設 560px */
+  height?: string;
+}
+const { markdown, height = "560px" } = Astro.props;
+---
+
+<div class="markmap-wrapper" style={`height:${height}`}>
+  <svg class="markmap" data-markdown={markdown}></svg>
+</div>
+
+<style>
+  .markmap-wrapper {
+    width: 100%;
+    margin: 1.5rem 0;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: var(--sl-color-bg);
+  }
+  .markmap {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script>
+  import { Transformer } from "markmap-lib";
+  import { Markmap } from "markmap-view";
+
+  const transformer = new Transformer();
+
+  function render() {
+    document.querySelectorAll<SVGElement>("svg.markmap").forEach((svg) => {
+      if (svg.dataset.rendered) return;
+      const md = svg.getAttribute("data-markdown") ?? "";
+      const { root } = transformer.transform(md);
+      Markmap.create(svg, { autoFit: true, duration: 400 }, root);
+      svg.dataset.rendered = "true";
+    });
+  }
+
+  render();
+  // Starlight 使用 view transitions，換頁後重新渲染
+  document.addEventListener("astro:page-load", render);
+</script>

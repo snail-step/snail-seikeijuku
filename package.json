@@ -13,6 +13,8 @@
     "@astrojs/starlight": "^0.40.0",
     "astro": "^6.4.6",
     "lucode-starlight": "^0.1.6",
+    "markmap-lib": "^0.18.12",
+    "markmap-view": "^0.18.12",
     "sharp": "^0.34.2"
   }
 }
