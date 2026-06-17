@@ -1,5 +1,5 @@
 ---
-title: SPCX / SPCXD / SPCXUSDT 比較
+title: vs. SPCX,SPCXD,SPCXUSDT
 description: 現貨、數位代幣化憑證與永續合約的手續費、稅務與風險橫向比較。
 ---
 

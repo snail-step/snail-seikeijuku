@@ -1,0 +1,25 @@
+:root {
+   /* Dark mode colors. */
+   --background: #33312e;
+}
+
+/* Light mode colors. */
+:root[data-theme='light'] {
+   --background: #e3dfd8;
+   /* sidebar - focus */
+   --accent: var(--gray-6);
+   /* sidebar - hover */
+   --secondary: var(--gray-6);
+}
+
+/* lucode 主題的 .sl-markdown-content * 寫在 @layer lucode 裡，
+   而 Starlight customCss 注入的檔案不帶 layer，
+   依 CSS Cascade Layers 規則，沒有 layer 的規則必定覆蓋有 layer 的規則。
+   這裡用 :not() 排除標題與程式碼，避免被一併蓋成 18px。 */
+.sl-markdown-content *:not(:is(h1, h2, h3, h4, h5, h6, pre, code, kbd, samp)) {
+   font-size: 18px;
+}
+
+.toc>div {
+   overflow-y: auto;
+}

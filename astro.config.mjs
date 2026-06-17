@@ -10,8 +10,8 @@ export default defineConfig({
   integrations: [
     starlight({
       title: '蝸牛政經塾',
-      // 首頁專屬樣式（限制內容最大寬度）
-      customCss: ['./src/styles/home.css'],
+      // 首頁專屬樣式（限制內容最大寬度）／全站排版設定
+      customCss: ['./src/styles/home.css', './src/styles/typography.css'],
       // 介面語言設為繁體中文
       defaultLocale: 'root',
       locales: {
@@ -42,8 +42,18 @@ export default defineConfig({
             'posts/moving-average',
             // 分類資料夾：名詞解釋（posts/noun-explanation 內自動列出）
             {
-              label: '名詞解釋',
+              label: '🔠名詞解釋',
               items: [{ autogenerate: { directory: 'posts/noun-explanation' } }],
+            },
+            // 分類資料夾：讀書會（posts/weekly 內自動列出）
+            {
+              label: '📌讀書會',
+              items: [{ autogenerate: { directory: 'posts/weekly' } }],
+            },
+            // 分類資料夾：讀書會（posts/mit-investments-course 內自動列出）
+            {
+              label: '✏️MIT投資學',
+              items: [{ autogenerate: { directory: 'posts/mit-investments-course' } }],
             },
           ],
         },
