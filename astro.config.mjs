@@ -40,6 +40,10 @@ export default defineConfig({
           footerText: '© 2026 蝸牛政經塾',
         }),
       ],
+      // 覆寫 Lucode 的 Sidebar，改用 <details>/<summary> 讓資料夾群組可摺疊（支援 sidebar 設定的 collapsed）
+      components: {
+        Sidebar: './src/components/overrides/Sidebar.astro',
+      },
       // 側邊欄：文章列表。資料夾分類需明確指定中文標籤，
       // 其餘未分類文章維持手動列出。
       sidebar: [
@@ -53,21 +57,25 @@ export default defineConfig({
             'posts/moving-average',
             // 分類資料夾：名詞解釋（posts/noun-explanation 內自動列出）
             {
-              label: '🔠名詞解釋',
+              label: '🔠 名詞解釋',
+              collapsed: false,
               items: [{ autogenerate: { directory: 'posts/noun-explanation' } }],
             },
             // 分類資料夾：讀書會（posts/weekly 內自動列出）
             {
-              label: '📌讀書會',
+              label: '📌 讀書會',
+              collapsed: true,
               items: [{ autogenerate: { directory: 'posts/weekly' } }],
             },
             // 分類資料夾：讀書會（posts/mit-investments-course 內自動列出）
             {
-              label: '✏️財報/法說 分析',
+              label: '✏️ 財報/法說 分析',
+              collapsed: false,
               items: [{ autogenerate: { directory: 'posts/finance-reports' } }],
             },
             {
-              label: '✏️(好難 先放棄) MIT投資學',
+              label: '✏️ (好難 先放棄) MIT投資學',
+              collapsed: true,
               items: [{ autogenerate: { directory: 'posts/mit-investments-course' } }],
             },
           ],
