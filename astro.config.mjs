@@ -30,6 +30,7 @@ export default defineConfig({
           lang: 'zh-TW',
         },
       },
+      lastUpdated: true,
       // 套用 Lucode（shadcn/ui 風格）主題
       plugins: [
         lucode({
@@ -66,7 +67,7 @@ export default defineConfig({
               items: [{ autogenerate: { directory: 'posts/finance-reports' } }],
             },
             {
-              label: '✏️MIT投資學',
+              label: '✏️(好難 先放棄) MIT投資學',
               items: [{ autogenerate: { directory: 'posts/mit-investments-course' } }],
             },
           ],

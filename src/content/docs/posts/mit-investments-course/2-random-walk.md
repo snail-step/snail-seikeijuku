@@ -5,13 +5,6 @@ description: 本課程將涵蓋以下五個主題
 
 
 15.433 INVESTMENTS — Class 2: Securities, Random Walk on Wall Street
-# 15.433 投資學 — 第二講：證券、華爾街的隨機漫步
-
-**EN**
-Reto R. Gallati — MIT Sloan School of Management — Spring 2003 — February 5th 2003
-
-**中文**
-Reto R. Gallati — 麻省理工學院史隆管理學院（MIT Sloan）— 2003 年春季 — 2003 年 2 月 5 日
 
 ---
 
@@ -91,6 +84,8 @@ $$\widetilde{X} = \begin{cases} 0 & \text{機率為 } p \\ 1 & \text{機率為 }
 
 - 標準常態分布
 
+![常態分布圖](./images/2-1.png)
+
 圖 1：常態分布，來源：RiskMetrics™ 技術文件，第 69 頁。（標準常態機率密度函數 PDF，峰值約為 0.40；圖中標示百分位數：−1.28 為第 10 百分位、−1.65 為第 5 百分位、−2.33 為第 1 百分位。）
 
 - 1 個標準差 → 68.26% 的機率
@@ -151,7 +146,7 @@ where ε is a random drawing from a standardized normal distribution N(0,1). The
 
 It follows from the first property that ∆z itself has a normal distribution with:
 - mean of ∆z = 0  (2)
-- standard deviation of ∆z = √∆t  (3)
+- standard deviation of ∆z = $$\sqrt{\Delta t} \quad$$  (3)
 - variance of ∆z = ∆t  (4)
 
 The second property implies that z follows a Markov process.
@@ -166,7 +161,24 @@ $$z(T) - z(0) = \sum_{i=1}^{N} \varepsilon_i \sqrt{\Delta t} \quad (6)$$
 
 where the εᵢ (1, 2, ..., N) are random drawings from N(0,1).
 
-> **Footnote on the Markov process:** A Markov process is a particular type of stochastic process where only the present value of a variable is relevant for predicting the future. The past history of the variable and the way that the present has emerged from the past are irrelevant. Stock prices are usually assumed to follow a Markov process. Suppose that the price of IBM stock is $100 now. If the stock price follows a Markov process, our predictions should be unaffected by the price one week ago, one month ago, or one year ago. The only relevant piece of information is that the price is now $100. Predictions for the future are uncertain and must be expressed in terms of probability distributions. The Markov property implies that the probability distribution of the price at any particular future time is not dependent on the particular path followed by the price in the past. The Markov property of stock prices is consistent with the weak form of market efficiency. This states that the present price of a stock impounds all the information contained in a record of past prices. If the weak form of market efficiency were not true, technical analysts could make above-average returns by interpreting charts of the past history of stock prices. There is very little evidence that they are, in fact, able to do this. Statistical properties of the stock price history of IBM may be useful in determining the characteristics of the stochastic process followed by the stock price (e.g. its volatility). The point being made here is that the particular path followed by the stock in the past is irrelevant.
+> **Footnote on the Markov process:** A Markov process is a particular type of stochastic process where only the present value of a variable is relevant for predicting the future. The past history of the variable and the way that the present has emerged from the past are irrelevant. Stock prices are usually assumed to follow a Markov process. Suppose that the price of IBM stock is \$100 now. If the stock price follows a Markov process, our predictions should be unaffected by the price one week ago, one month ago, or one year ago. The only relevant piece of information is that the price is now \$100. Predictions for the future are uncertain and must be expressed in terms of probability distributions. The Markov property implies that the probability distribution of the price at any particular future time is not dependent on the particular path followed by the price in the past. The Markov property of stock prices is consistent with the weak form of market efficiency. This states that the present price of a stock impounds all the information contained in a record of past prices. If the weak form of market efficiency were not true, technical analysts could make above-average returns by interpreting charts of the past history of stock prices. There is very little evidence that they are, in fact, able to do this. Statistical properties of the stock price history of IBM may be useful in determining the characteristics of the stochastic process followed by the stock price (e.g. its volatility). The point being made here is that the particular path followed by the stock in the past is irrelevant.
+
+---
+
+- Figure 3: Relatively large value of ∆t.
+- Figure 4: Small value of ∆t.
+- Figure 5: The true process obtained as ∆t → 0.
+
+(These illustrate how, as the time step ∆t shrinks toward zero, the discrete approximation of the path of z converges to the true continuous process.)
+
+
+From the second property of Wiener processes, the εᵢ's are independent of each other; it follows from equation 6 that z(T) − z(0) is normally distributed with
+- mean of [z(T) − z(0)] = 0  (7)
+- standard deviation of [z(T) − z(0)] = √∆t  (8)
+- variance of [z(T) − z(0)] = ∆t  (9)
+
+This is consistent with the discussion earlier in this section.
+
 
 **中文**
 
@@ -178,7 +190,7 @@ $$\Delta z = \varepsilon \sqrt{\Delta t} \quad (1)$$
 
 由第一個性質可推得，∆z 本身服從常態分布，且：
 - ∆z 的平均值 = 0  (2)
-- ∆z 的標準差 = √∆t  (3)
+- ∆z 的標準差 = $$\sqrt{\Delta t} \quad$$  (3)
 - ∆z 的變異數 = ∆t  (4)
 
 第二個性質意味著 z 服從一個馬可夫過程（Markov process）。
@@ -197,17 +209,6 @@ $$z(T) - z(0) = \sum_{i=1}^{N} \varepsilon_i \sqrt{\Delta t} \quad (6)$$
 
 ---
 
-## Discretization Figures / 離散化圖示
-
-**EN**
-
-- Figure 3: Relatively large value of ∆t.
-- Figure 4: Small value of ∆t.
-- Figure 5: The true process obtained as ∆t → 0.
-
-(These illustrate how, as the time step ∆t shrinks toward zero, the discrete approximation of the path of z converges to the true continuous process.)
-
-**中文**
 
 - 圖 3：∆t 取相對較大的值。
 - 圖 4：∆t 取較小的值。
@@ -215,20 +216,16 @@ $$z(T) - z(0) = \sum_{i=1}^{N} \varepsilon_i \sqrt{\Delta t} \quad (6)$$
 
 （這些圖說明：當時間步長 ∆t 縮小趨近於零時，z 路徑的離散近似會收斂到真實的連續過程。）
 
----
+由維納過程的第二個性質可知，各 εᵢ 彼此獨立；由式 (6) 可推得 z(T) − z(0) 服從常態分布，且
+- [z(T) − z(0)] 的平均值 = 0  (7)
+- [z(T) − z(0)] 的標準差 = √∆t  (8)
+- [z(T) − z(0)] 的變異數 = ∆t  (9)
 
-## Properties and the Generalized Wiener Process / 性質與廣義維納過程
+這與本節稍早的討論一致。
+
+### Generalized Wiener Process / 廣義維納過程
 
 **EN**
-
-From the second property of Wiener processes, the εᵢ's are independent of each other; it follows from equation 6 that z(T) − z(0) is normally distributed with
-- mean of [z(T) − z(0)] = 0  (7)
-- standard deviation of [z(T) − z(0)] = √∆t  (8)
-- variance of [z(T) − z(0)] = ∆t  (9)
-
-This is consistent with the discussion earlier in this section.
-
-**Generalized Wiener Process**
 
 The basic Wiener process, dz, that has been developed so far has a drift rate of zero and a variance rate of 1.0. The drift rate of zero means that the expected value of z at any future time is equal to its current value. The variance rate of 1.0 means that the variance of the change in z in a time interval of length T equals T. A generalized Wiener process for a variable x can be defined in terms of dz as follows:
 
@@ -251,15 +248,6 @@ $$x = x_0 + a\,t \quad (13)$$
 where x₀ is the value of x at time zero. In a period of time of length T, x increases by an amount aT. The b dz term on the right-hand side of equation 10 can be regarded as adding noise or variability to the path followed by x. The amount of this noise or variability is b times a Wiener process. A Wiener process has a standard deviation of 1.0. It follows that b times a Wiener process has a standard deviation of b. In a small time interval ∆t, the change in value of x, ∆x, is — from equations 1 and 10 — given by
 
 $$\Delta x = a\,\Delta t + b\,\varepsilon \sqrt{\Delta t} \quad (14)$$
-
-**中文**
-
-由維納過程的第二個性質可知，各 εᵢ 彼此獨立；由式 (6) 可推得 z(T) − z(0) 服從常態分布，且
-- [z(T) − z(0)] 的平均值 = 0  (7)
-- [z(T) − z(0)] 的標準差 = √∆t  (8)
-- [z(T) − z(0)] 的變異數 = ∆t  (9)
-
-這與本節稍早的討論一致。
 
 **廣義維納過程**
 
@@ -287,7 +275,7 @@ $$\Delta x = a\,\Delta t + b\,\varepsilon \sqrt{\Delta t} \quad (14)$$
 
 ---
 
-## Distribution of ∆x / ∆x 的分布
+### Distribution of ∆x / ∆x 的分布
 
 **EN**
 
@@ -323,11 +311,11 @@ Thus, the generalized Wiener process given in equation 10 has an expected drift 
 
 ---
 
-## Process for Stock Prices / 股價的過程
+### Process for Stock Prices / 股價的過程
 
 **EN**
 
-It is tempting to suggest that a stock price follows a generalized Wiener process; that is, that it has a constant expected drift rate and a constant variance rate. However, this model fails to capture a key aspect of stock prices. This is that the expected percentage return required by investors from a stock is independent of the stock price. If investors require a 14% per annum expected return when the stock price is $10, then ceteris paribus, they will also require a 14% per annum expected return when it is $50. Clearly, the constant expected drift-rate assumption is inappropriate and needs to be replaced by the assumption that the expected return (that is, expected drift divided by the stock price) is constant. If S is the stock price at time t, the expected drift rate in S should be assumed to be µS for some constant parameter, µ. This means that in a short interval of time, ∆t, the expected increase in S is µS∆t. The parameter µ is the expected rate of return on the stock, expressed in decimal form.
+It is tempting to suggest that a stock price follows a generalized Wiener process; that is, that it has a constant expected drift rate and a constant variance rate. However, this model fails to capture a key aspect of stock prices. This is that the expected percentage return required by investors from a stock is independent of the stock price. If investors require a 14% per annum expected return when the stock price is \$10, then ceteris paribus, they will also require a 14% per annum expected return when it is \$50. Clearly, the constant expected drift-rate assumption is inappropriate and needs to be replaced by the assumption that the expected return (that is, expected drift divided by the stock price) is constant. If S is the stock price at time t, the expected drift rate in S should be assumed to be µS for some constant parameter, µ. This means that in a short interval of time, ∆t, the expected increase in S is µS∆t. The parameter µ is the expected rate of return on the stock, expressed in decimal form.
 
 If the volatility of the stock price is always zero, this model implies that
 
@@ -347,7 +335,7 @@ $$S_T = S_0 e^{\mu T} \quad (24)$$
 
 where S₀ and Sₜ are the stock price at time zero and time T. Equation 24 shows that when the variance rate is zero, the stock price grows at a continuously compounded rate of µ per unit of time.
 
-In practice, of course, a stock price does exhibit volatility. A reasonable assumption is that the variability of the percentage return in a short period of time, ∆t, is the same regardless of the stock price. In other words, an investor is just as uncertain of the percentage return when the stock price is $50 as when it is $10. This suggests that the standard deviation of the change in a short period of time ∆t should be proportional to the stock price and leads to the model
+In practice, of course, a stock price does exhibit volatility. A reasonable assumption is that the variability of the percentage return in a short period of time, ∆t, is the same regardless of the stock price. In other words, an investor is just as uncertain of the percentage return when the stock price is \$50 as when it is \$10. This suggests that the standard deviation of the change in a short period of time ∆t should be proportional to the stock price and leads to the model
 
 $$dS = \mu S\,dt + \sigma S\,dz \quad (25)$$
 
@@ -387,7 +375,7 @@ $$\frac{dS}{S} = \mu\,dt + \sigma\,dz. \quad (26)$$
 
 ---
 
-## The Most Widely Used Model / 最廣泛使用的模型
+### The Most Widely Used Model / 最廣泛使用的模型
 
 **EN**
 

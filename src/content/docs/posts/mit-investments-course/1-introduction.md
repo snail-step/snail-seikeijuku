@@ -5,8 +5,8 @@ description: 本課程將涵蓋以下五個主題
 
 
 15.433 INVESTMENTS — Class 1: Introduction (Spring 2003)
-# 15.433 投資學 — 第一講：導論
-（2003 年春季）
+
+15.433 投資學 — 第一講：導論（2003 年春季）
 
 
 ---
@@ -279,7 +279,7 @@ Monthly returns 1926/7 to 2000/12
 |---|---|---|
 | Mean | 0.99% | 0.31% |
 | Standard Deviation | 5.50% | 0.26% |
-| Total Return | $1,828 | $16.27 |
+| Total Return | \$1,828 | \$16.27 |
 
 \* Value-Weighted
 
@@ -291,7 +291,7 @@ Monthly returns 1926/7 to 2000/12
 |---|---|---|
 | 平均值 | 0.99% | 0.31% |
 | 標準差 | 5.50% | 0.26% |
-| 總報酬 | $1,828 | $16.27 |
+| 總報酬 | \$1,828 | \$16.27 |
 
 \* 市值加權（Value-Weighted）
 
@@ -451,17 +451,17 @@ Other examples: collateralized debt (loan or bond) obligations, asset backed deb
 
 **EN**
 
-FleetBoston plays "Good Bank/Bad Bank," unloading $1.35 Billion in troubled Loans. Patriarch Partners LLC, a NY fund management boutique, created a CLO to raise about $1 billion to acquire the loans.
+FleetBoston plays "Good Bank/Bad Bank," unloading \$1.35 Billion in troubled Loans. Patriarch Partners LLC, a NY fund management boutique, created a CLO to raise about \$1 billion to acquire the loans.
 
 See the following figure how FleetBoston's problem loans made their way from Fleet's books to a special collateralized-loan obligation, funded by investors.
 
 The structure (Figure 10: Setting-up a special purpose vehicle) involved:
-- $925 million in triple-A rated bonds
-- $75.75 million in single-A rated bonds
-- $35.5 million of equity
-- $275 million (face value) in Ark subordinated securities
-- Patriarch Partner's Ark CLO paying roughly $725 million cash
-- $1.35 billion in funded loans plus $150 million in unfunded loans transferred
+- \$925 million in triple-A rated bonds
+- \$75.75 million in single-A rated bonds
+- \$35.5 million of equity
+- \$275 million (face value) in Ark subordinated securities
+- Patriarch Partner's Ark CLO paying roughly \$725 million cash
+- \$1.35 billion in funded loans plus \$150 million in unfunded loans transferred
 
 **中文**
 
