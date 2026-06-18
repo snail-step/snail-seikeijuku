@@ -1,6 +1,8 @@
 :root {
    /* Dark mode colors. */
-   --background: #33312e;
+   --background: #2c2a28;
+
+   --border: var(--gray-5);
 }
 
 /* Light mode colors. */
@@ -10,6 +12,8 @@
    --accent: var(--gray-6);
    /* sidebar - hover */
    --secondary: var(--gray-6);
+   /* hr */
+   --border: var(--gray-5);
 }
 
 /* lucode 主題的 .sl-markdown-content * 寫在 @layer lucode 裡，
@@ -22,4 +26,10 @@
 
 .toc>div {
    overflow-y: auto;
+}
+
+/* 表格欄位過多時，固定每欄最小寬度，超出寬度時改為左右滾動，
+   而不是把文字擠在一起。 */
+.sl-markdown-content :is(th, td):not(:where(.not-content *)) {
+   min-width: 220px;
 }

@@ -19,7 +19,7 @@ export default defineConfig({
       // 首頁專屬樣式（限制內容最大寬度）／全站排版設定，並載入 KaTeX 公式樣式
       customCss: [
         './src/styles/home.css',
-        './src/styles/typography.css',
+        './src/styles/customCss.css',
         'katex/dist/katex.min.css',
       ],
       // 介面語言設為繁體中文
