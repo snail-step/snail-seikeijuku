@@ -1,6 +1,8 @@
 ---
 title: vs. SPCX,SPCXD,SPCXUSDT
 description: 現貨、數位代幣化憑證與永續合約的手續費、稅務與風險橫向比較。
+sidebar:
+  order: 3
 ---
 
 為了確保讀者能精準理解，我們首先定義這三項資產的本質：

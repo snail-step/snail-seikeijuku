@@ -1,6 +1,8 @@
 ---
 title: SPCX 上市資訊與板塊影響
 description: SPCX 上市基本資訊、現況與相關投資標的、板塊影響。
+sidebar:
+  order: 2
 ---
 
 

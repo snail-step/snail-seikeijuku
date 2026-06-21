@@ -1,5 +1,5 @@
 ---
-title: README
+title: READ ME
 description: 課程來源
 ---
 

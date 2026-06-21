@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n \"^---$\\\\|title:\\\\|\\\\.\\\\./\" knowledge-map.mdx spcx.md spcx-spcxd.md moving-average.md sources.md)",
+      "Bash(git stash *)"
+    ]
+  }
+}

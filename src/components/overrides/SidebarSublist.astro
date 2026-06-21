@@ -55,13 +55,15 @@ const { sublist } = Astro.props;
         padding-left: calc(var(--spacing) * 2);
         padding-right: calc(var(--spacing) * 2);
         border-radius: calc(var(--radius) - 2px);
-        color: var(--muted-foreground);
+        color: var(--gray-2);
         display: flex;
         align-items: center;
         justify-content: space-between;
         cursor: pointer;
         list-style: none;
         user-select: none;
+        background-color: rgba(184, 184, 184, 0.3);
+        margin-top: calc(var(--spacing) * 2);
     }
 
     .entry-title::-webkit-details-marker {
@@ -115,17 +117,17 @@ const { sublist } = Astro.props;
     }
 
     .entry-link[aria-current='page'] .entry-link-inner {
-        background-color: var(--accent);
-        color: var(--accent-foreground);
+        color: #00939d;
+        font-weight: 700;
     }
 
     .entry-link:hover:not([aria-current='page']) .entry-link-inner {
-        background-color: var(--secondary);
+        background-color: rgba(91, 91, 91, 0.25);
         color: var(--secondary-foreground);
     }
-
+    
     .entry-badge {
-        color: rgb(0 0 0);
+        color: var(--gray-6);
         line-height: 1;
         font-size: 0.75rem;
         padding-top: calc(var(--spacing) * 0.5);

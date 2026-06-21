@@ -35,7 +35,7 @@ export default defineConfig({
       plugins: [
         lucode({
           navLinks: [
-            { label: '文章', link: '/posts/knowledge-map/' },
+            { label: '文章', link: '/posts/articles/knowledge-map/' },
           ],
           footerText: '© 2026 蝸牛政經塾',
         }),
@@ -45,40 +45,32 @@ export default defineConfig({
         Sidebar: './src/components/overrides/Sidebar.astro',
       },
       // 側邊欄：文章列表。資料夾分類需明確指定中文標籤，
-      // 其餘未分類文章維持手動列出。
+      // 其餘未分類文章維持手動列出。最外層不包群組，直接攤平顯示。
       sidebar: [
+        // 未分類文章（posts/articles 內自動列出，依各篇 frontmatter 的 sidebar.order 排序）
+        { autogenerate: { directory: 'posts/articles' } },
+        // 分類資料夾：名詞解釋（posts/noun-explanation 內自動列出）
         {
-          label: '文章',
-          items: [
-            // 未分類文章（posts 目錄下的單篇 markdown）
-            'posts/knowledge-map',
-            'posts/spcx',
-            'posts/spcx-spcxd',
-            'posts/moving-average',
-            // 分類資料夾：名詞解釋（posts/noun-explanation 內自動列出）
-            {
-              label: '🔠 名詞解釋',
-              collapsed: false,
-              items: [{ autogenerate: { directory: 'posts/noun-explanation' } }],
-            },
-            // 分類資料夾：讀書會（posts/weekly 內自動列出）
-            {
-              label: '📌 讀書會',
-              collapsed: true,
-              items: [{ autogenerate: { directory: 'posts/weekly' } }],
-            },
-            // 分類資料夾：讀書會（posts/mit-investments-course 內自動列出）
-            {
-              label: '✏️ 財報/法說 分析',
-              collapsed: false,
-              items: [{ autogenerate: { directory: 'posts/finance-reports' } }],
-            },
-            {
-              label: '✏️ (好難 先放棄) MIT投資學',
-              collapsed: true,
-              items: [{ autogenerate: { directory: 'posts/mit-investments-course' } }],
-            },
-          ],
+          label: '🔠 名詞解釋',
+          collapsed: false,
+          items: [{ autogenerate: { directory: 'posts/noun-explanation' } }],
+        },
+        // 分類資料夾：讀書會（posts/weekly 內自動列出）
+        {
+          label: '📌 讀書會',
+          collapsed: true,
+          items: [{ autogenerate: { directory: 'posts/weekly' } }],
+        },
+        // 分類資料夾：讀書會（posts/mit-investments-course 內自動列出）
+        {
+          label: '✏️ 財報/法說 分析',
+          collapsed: false,
+          items: [{ autogenerate: { directory: 'posts/finance-reports' } }],
+        },
+        {
+          label: '✏️ (好難 先放棄) MIT投資學',
+          collapsed: true,
+          items: [{ autogenerate: { directory: 'posts/mit-investments-course' } }],
         },
       ],
     }),

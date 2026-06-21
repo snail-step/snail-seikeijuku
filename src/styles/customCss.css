@@ -8,10 +8,6 @@
 /* Light mode colors. */
 :root[data-theme='light'] {
    --background: #e3dfd8;
-   /* sidebar - focus */
-   --accent: var(--gray-6);
-   /* sidebar - hover */
-   --secondary: var(--gray-6);
    /* hr */
    --border: var(--gray-5);
 }
@@ -24,12 +20,22 @@
    font-size: 18px;
 }
 
+/* 內文 right sidebar */
 .toc>div {
    overflow-y: auto;
+}
+
+.level-h2 h2 {
+   font-size: 22px;
 }
 
 /* 表格欄位過多時，固定每欄最小寬度，超出寬度時改為左右滾動，
    而不是把文字擠在一起。 */
 .sl-markdown-content :is(th, td):not(:where(.not-content *)) {
    min-width: 220px;
+}
+
+/* 次要說明文字（標注不重要的內容），用法：<span class="muted">文字</span> */
+.muted {
+   color: var(--gray-4);
 }
