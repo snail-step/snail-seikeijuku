@@ -55,17 +55,17 @@ export default defineConfig({
           collapsed: false,
           items: [{ autogenerate: { directory: 'posts/noun-explanation' } }],
         },
-        // 分類資料夾：讀書會（posts/weekly 內自動列出）
-        {
-          label: '📌 讀書會',
-          collapsed: true,
-          items: [{ autogenerate: { directory: 'posts/weekly' } }],
-        },
         // 分類資料夾：讀書會（posts/mit-investments-course 內自動列出）
         {
           label: '✏️ 財報/法說 分析',
           collapsed: false,
           items: [{ autogenerate: { directory: 'posts/finance-reports' } }],
+        },
+        // 分類資料夾：讀書會（posts/weekly 內自動列出）
+        {
+          label: '📌 讀書會',
+          collapsed: false,
+          items: [{ autogenerate: { directory: 'posts/weekly' } }],
         },
         {
           label: '✏️ (好難 先放棄) MIT投資學',

@@ -3,7 +3,7 @@ title: 蝸牛政經塾
 description: 蝸牛政經塾 — 用 Markdown 寫作的政經評論部落格。
 template: splash
 hero:
-  tagline: 慢慢讀、慢慢想。政治與經濟的觀察筆記。
+  tagline: 慢慢讀、慢慢想。非常正經的政經觀察筆記。
   actions:
     - text: 開始閱讀
       link: /posts/articles/knowledge-map/
@@ -20,13 +20,19 @@ import KnowledgeMap from "../../components/KnowledgeMap.astro";
 
 <div class="home-content">
 
-## 最新文章
+
+## 知識地圖
+
+<KnowledgeMap />
+
+
+## 文章們
 
 <CardGrid>
   <LinkCard
-    title="第一篇文章"
-    description="知識地圖：一覽所有文章的關係與分類。"
-    href="/posts/articles/knowledge-map/"
+    title="📌 每週讀書會"
+    description="開啟知識的槓桿！"
+    href="/posts/weekly/readme/"
   />
   <LinkCard
     title="SPCX 上市資訊與板塊影響"
@@ -54,9 +60,5 @@ import KnowledgeMap from "../../components/KnowledgeMap.astro";
     href="/posts/noun-explanation/adr/"
   />
 </CardGrid>
-
-## 知識地圖
-
-<KnowledgeMap />
 
 </div>

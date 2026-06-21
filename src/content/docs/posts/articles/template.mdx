@@ -1,0 +1,168 @@
+---
+title: ⓘ 文章模板 Template
+description: 請善用
+sidebar:
+  order: 1
+---
+
+import { Aside, Badge, Card, CardGrid, Icon, Tabs, TabItem, LinkCard, LinkButton, Steps, FileTree } from '@astrojs/starlight/components';
+
+這是 `Starlight` (UI 套件工具) 內建元件的使用範例，複製貼上後依需求修改。
+
+**注意：這些元件需要寫在 `.mdx` 檔案裡（不能用在 `.md`），且要在檔案最上方 import，如本檔案第 9 行：**
+
+`import { Aside, Badge, Card, CardGrid, Icon, Tabs, TabItem, LinkCard, LinkButton, Steps, FileTree } from '@astrojs/starlight/components';`
+
+## Aside（提示框）
+
+```mdx
+<Aside type="note">這是一般提示。</Aside>
+<Aside type="tip" title="自訂標題">這是 tip 類型，可自訂標題。</Aside>
+<Aside type="caution">這是注意事項。</Aside>
+<Aside type="danger">這是危險警告。</Aside>
+```
+
+<Aside type="note">這是一般提示。</Aside>
+<Aside type="tip" title="自訂標題">這是 tip 類型，可自訂標題。</Aside>
+<Aside type="caution">這是注意事項。</Aside>
+<Aside type="danger">這是危險警告。</Aside>
+
+也可以不用 import，直接用 Markdown 指令語法（在 .md / .mdx 都能用）：
+
+```md
+:::note
+這是一般提示。
+:::
+
+:::tip[自訂標題]
+這是 tip 類型。
+:::
+```
+
+:::note
+這是一般提示。
+:::
+
+:::tip[自訂標題]
+這是 tip 類型。
+:::
+
+## Badge（小標籤）
+
+```mdx
+<Badge text="New" variant="success" />
+<Badge text="實驗性" variant="caution" />
+<Badge text="已過時" variant="danger" />
+<Badge text="預設" variant="default" />
+```
+
+<Badge text="New" variant="success" /> <Badge text="實驗性" variant="caution" /> <Badge text="已過時" variant="danger" /> <Badge text="預設" variant="default" />
+
+## Card / CardGrid（卡片）
+
+```mdx
+<CardGrid>
+	<Card title="卡片一" icon="seti:markdown">
+		卡片內容說明文字。
+	</Card>
+	<Card title="卡片二" icon="seti:db">
+		卡片內容說明文字。
+	</Card>
+</CardGrid>
+```
+
+<CardGrid>
+	<Card title="卡片一" icon="seti:markdown">
+		卡片內容說明文字。
+	</Card>
+	<Card title="卡片二" icon="seti:db">
+		卡片內容說明文字。
+	</Card>
+</CardGrid>
+
+## Tabs（分頁標籤）
+
+```mdx
+<Tabs>
+	<TabItem label="股票">內容 A</TabItem>
+	<TabItem label="加密貨幣">內容 B</TabItem>
+</Tabs>
+```
+
+<Tabs>
+	<TabItem label="股票">內容 A</TabItem>
+	<TabItem label="加密貨幣">內容 B</TabItem>
+</Tabs>
+
+## Steps（步驟）
+
+```mdx
+<Steps>
+1. 第一步：開戶。
+2. 第二步：入金。
+3. 第三步：下單。
+</Steps>
+```
+
+<Steps>
+1. 第一步：開戶。
+2. 第二步：入金。
+3. 第三步：下單。
+</Steps>
+
+## FileTree（檔案樹）
+
+```mdx
+<FileTree>
+- src
+  - content
+    - docs
+      - posts
+        - articles
+          - template.mdx
+</FileTree>
+```
+
+<FileTree>
+- src
+  - content
+    - docs
+      - posts
+        - articles
+          - template.mdx
+</FileTree>
+
+## LinkCard / LinkButton（連結）
+
+```mdx
+<LinkCard title="台積電 26Q1 分析" href="/posts/finance-reports/tsmc-26q1/" description="法人說明會重點整理" />
+<LinkButton href="/posts/articles/knowledge-map/">查看知識地圖</LinkButton>
+```
+
+<LinkCard title="台積電 26Q1 分析" href="/posts/finance-reports/tsmc-26q1/" description="法人說明會重點整理" />
+
+<LinkButton href="/posts/articles/knowledge-map/">查看知識地圖</LinkButton>
+
+## Icon（圖示）
+
+```mdx
+<Icon name="star" /> <Icon name="rocket" color="goldenrod" size="2rem" />
+```
+
+<Icon name="star" /> <Icon name="rocket" color="goldenrod" size="2rem" />
+
+## Code（程式碼區塊，含標題/高亮）
+
+````mdx
+```js title="example.js" {2}
+function add(a, b) {
+  return a + b; // 這行會被標記
+}
+```
+````
+
+```js title="example.js" {2}
+function add(a, b) {
+  return a + b; // 這行會被標記
+}
+```
