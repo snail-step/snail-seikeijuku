@@ -5,19 +5,12 @@
 [Lucode Starlight 主題](https://github.com/lucas-labs/lucode-starlight-theme)
 （shadcn/ui 風格），部署在 Vercel。
 
-## 本機開發
-
-```bash
-npm install      # 安裝依賴
-npm run dev      # 啟動本機伺服器 http://localhost:4321
-npm run build    # 產生靜態檔到 dist/
-npm run preview  # 預覽 build 結果
-```
-
 ## 怎麼寫文章
 
-在 `src/content/docs/posts/` 底下新增一個 `.md` 檔，最上面放 frontmatter：
+在 [src/content/docs/posts/articles](https://github.com/snail-step/snail-seikeijuku/tree/main/src/content/docs/posts/articles) 底下
 
+1. 新增一個 `.md` 檔
+2. 最上面放 標題、小標題（frontmatter）：
 ```md
 ---
 title: 文章標題
@@ -27,22 +20,27 @@ description: 一句話說明這篇文章。
 正文用 Markdown 寫……
 ```
 
-存檔後文章會自動出現在側邊欄。首頁是 `src/content/docs/index.mdx`。
+3. commit（存檔）後，文章會自動出現在側邊欄。
 
-## 部署到 Vercel
+# 以下 for development
 
-1. 把這個資料夾推到 GitHub（GitLab / Bitbucket 也可以）：
+## Local
+
+```bash
+npm install      # 安裝依賴
+npm run dev      # 啟動本機伺服器 http://localhost:4321
+npm run build    # 產生靜態檔到 dist/
+npm run preview  # 預覽 build 結果
+```
+
+## Deploy
+
+1. commit and push to `main` branch:
    ```bash
    git init && git add -A && git commit -m "init blog"
    git remote add origin <你的 repo 網址>
    git push -u origin main
    ```
-2. 到 [vercel.com](https://vercel.com) → **Add New → Project** → 匯入這個 repo。
-3. Vercel 會自動偵測到 Astro，build 指令 `astro build`、輸出目錄 `dist`
-   都會自動帶好，直接按 **Deploy** 即可。
-4. 部署完成後，把 `astro.config.mjs` 裡的 `site` 改成你的正式網域。
-
-> 純靜態網站，不需要額外的 Vercel adapter，也不需要 `vercel.json`。
 
 ## 自訂
 
