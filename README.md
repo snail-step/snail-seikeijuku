@@ -1,4 +1,4 @@
-# 蝸牛政經塾 / snail-seikeijuku
+# 蝸牛政經塾 - snail-seikeijuku
 
 用 Markdown 寫作的政經評論部落格，使用 [Astro](https://astro.build) +
 [Starlight](https://starlight.astro.build)，套用
