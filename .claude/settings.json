@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(grep -n \"^---$\\\\|title:\\\\|\\\\.\\\\./\" knowledge-map.mdx spcx.md spcx-spcxd.md moving-average.md sources.md)",
-      "Bash(git stash *)",
-      "Bash(curl -s http://localhost:4326/posts/articles/template/ -o /tmp/template.html -w \"%{http_code}\\\\n\")"
-    ]
-  }
-}
