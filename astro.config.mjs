@@ -41,8 +41,10 @@ export default defineConfig({
         }),
       ],
       // 覆寫 Lucode 的 Sidebar，改用 <details>/<summary> 讓資料夾群組可摺疊（支援 sidebar 設定的 collapsed）
+      // 覆寫 PageTitle，把「最後更新時間」從頁尾移到文章標題下方（頁尾原本的 LastUpdated 改用 CSS 隱藏，見 customCss.css）
       components: {
         Sidebar: './src/components/overrides/Sidebar.astro',
+        PageTitle: './src/components/overrides/PageTitle.astro',
       },
       // 側邊欄：文章列表。資料夾分類需明確指定中文標籤，
       // 其餘未分類文章維持手動列出。最外層不包群組，直接攤平顯示。
@@ -60,6 +62,11 @@ export default defineConfig({
           label: '✏️ 財報/法說 分析',
           collapsed: false,
           items: [{ autogenerate: { directory: 'posts/finance-reports' } }],
+        },
+        {
+          label: '✏️ 頻道整理',
+          collapsed: false,
+          items: [{ autogenerate: { directory: 'posts/channel' } }],
         },
         // 分類資料夾：讀書會（posts/weekly 內自動列出）
         {

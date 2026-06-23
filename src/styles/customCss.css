@@ -27,15 +27,27 @@
 
 .level-h2 h2 {
    font-size: 22px;
+   color: var(--sl-color-white);
+}
+
+.level-h3 h3 {
+   font-size: 20px;
+   color: var(--sl-color-white);
 }
 
 /* 表格欄位過多時，固定每欄最小寬度，超出寬度時改為左右滾動，
    而不是把文字擠在一起。 */
 .sl-markdown-content :is(th, td):not(:where(.not-content *)) {
-   min-width: 220px;
+   min-width: 200px;
 }
 
 /* 次要說明文字（標注不重要的內容），用法：<span class="muted">文字</span> */
 .muted {
    color: var(--gray-4);
+}
+
+/* 「最後更新時間」已改在文章標題下方顯示（見 PageTitle.astro override），
+   隱藏頁尾原本的 LastUpdated，避免重複。 */
+[data-slot='doc-footer-meta'] p {
+   display: none;
 }
