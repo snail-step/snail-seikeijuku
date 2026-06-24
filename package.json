@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.40.0",
+    "@sentry/astro": "^10.60.0",
     "astro": "^6.4.6",
     "katex": "^0.17.0",
     "lucode-starlight": "^0.1.6",
