@@ -1,0 +1,12 @@
+---
+import { getEntry } from 'astro:content';
+
+interface Props {
+    slug: string;
+}
+
+const { slug } = Astro.props;
+const entry = await getEntry('docs', slug);
+---
+
+<a href={`/${slug}/`}>{entry?.data.title ?? slug}</a>

@@ -48,3 +48,10 @@ npm run preview  # 預覽 build 結果
 - 主題色票（圓角、側邊欄寬度等）：在自己的 CSS 覆寫 `--radius`、
   `--sidebar-width` 等變數，詳見
   [主題文件](https://lucas-labs.github.io/lucode-starlight-theme)。
+
+## 與 Claude Code 協作
+
+### command 1: `/update-knowledge-map`
+新增文章後，在 Claude Code 對話框輸入 `/update-knowledge-map`，會自動執行
+`npm run list-articles` 掃描所有文章，並比對更新
+`src/components/KnowledgeMap.astro` 裡的知識地圖大綱（補上新文章、移除已刪除的連結）。

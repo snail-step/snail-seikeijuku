@@ -16,6 +16,7 @@ const { height, background, textColor } = Astro.props;
 const markdown = `# 蝸牛政經塾
 ## 入門
 - [站台知識地圖](/posts/articles/knowledge-map/)
+- [網路資源,平台](/posts/articles/sources/)
 ## 美股與新標的
 ### 太空產業
 - [SPCX 上市資訊與板塊影響](/posts/articles/spcx/)
@@ -24,6 +25,11 @@ const markdown = `# 蝸牛政經塾
 ## 技術分析
 ### 趨勢判讀
 - [移動均線：週線、月線、季線](/posts/articles/moving-average/)
+## 基本分析
+### 估值指標
+- [P/E 本益比](/posts/noun-explanation/pe/)
+### 產業趨勢
+- [癌672 - Mosfet、PMIC、6吋8吋代工廠轉單受益](/posts/channel/aye-672/)
 ## 交易制度與工具
 ### 槓桿與保證金
 - [融資融券：維持率與斷頭](/posts/noun-explanation/margin-trading/)
@@ -31,9 +37,19 @@ const markdown = `# 蝸牛政經塾
 - [ADR 存託憑證：如何影響台股](/posts/noun-explanation/adr/)
 ## 財報/法說 分析
 ### 半導體
-- [台積電 26Q1 法說會](/posts/finance-reports/tsmc-26q1/)
+- [台積電 26Q1 法說會](/posts/finance-reports/tsmc-26Q1/)
+## 課程筆記
+### MIT 投資學（15.433）
+- [READ ME：課程來源](/posts/mit-investments-course/0-source/)
+- [第一講：導論](/posts/mit-investments-course/1-introduction/)
+- [第二講：證券、華爾街的隨機漫步](/posts/mit-investments-course/2-random-walk/)
+- [⤷ 筆記：維納過程](/posts/mit-investments-course/2-znote-wienerProcesses/)
+### MIT 財務理論（15.401）
+- [現值關係 I](/posts/channel/2-present-value-relations/)
 ## 讀書會
-- [讀書會方針與學習方法](/posts/weekly/readme/)`;
+- [讀書會方針與學習方法](/posts/weekly/readme/)
+- [06.21 投資小概論](/posts/weekly/260621/)
+- [06.28 PE/IDM轉單flow](/posts/weekly/260628/)`;
 ---
 
 <Markmap markdown={markdown} height={height} background={background} textColor={textColor} />
