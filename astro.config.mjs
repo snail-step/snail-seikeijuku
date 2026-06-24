@@ -72,7 +72,7 @@ export default defineConfig({
         },
         // 分類資料夾：讀書會（posts/mit-investments-course 內自動列出）
         {
-          label: '✏️ 財報/法說 分析',
+          label: '✏️ 財報/法說/產業鏈',
           collapsed: false,
           items: [{ autogenerate: { directory: 'posts/finance-reports' } }],
         },
