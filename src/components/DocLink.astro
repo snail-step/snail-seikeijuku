@@ -1,12 +1,37 @@
 ---
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 
 interface Props {
     slug: string;
+    anchor?: string;
+    target?: string;
 }
 
-const { slug } = Astro.props;
-const entry = await getEntry('docs', slug);
+const { slug, anchor, target } = Astro.props;
+
+// target="_blank" 時自動補上安全的 rel
+const rel = target === '_blank' ? 'noopener noreferrer' : undefined;
+
+// slug 可以直接帶錨點，例如 "posts/channel/aye-672/#第二段6-11條延伸解析"
+// 也可以用獨立的 anchor prop。slug 內的錨點優先。
+const [rawSlug, slugAnchor] = slug.split('#');
+const cleanSlug = rawSlug.replace(/\/$/, '');
+const finalAnchor = (slugAnchor ?? anchor)?.replace(/^#/, '');
+
+const entry = await getEntry('docs', cleanSlug);
+
+// 有錨點時，從目標文章的 headings 反查出該段標題文字
+let anchorText: string | undefined;
+if (entry && finalAnchor) {
+    const { headings } = await render(entry);
+    anchorText = headings.find((h) => h.slug === finalAnchor)?.text;
+}
+
+const hash = finalAnchor ? `#${finalAnchor}` : '';
+const href = `/${cleanSlug}/${hash}`;
+
+const label = entry?.data.title ?? cleanSlug;
+const text = anchorText ? `${label} > ${anchorText}` : label;
 ---
 
-<a href={`/${slug}/`}>{entry?.data.title ?? slug}</a>
+<a href={href} target={target} rel={rel}>{text}</a>

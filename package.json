@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "list-articles": "node scripts/list-articles.mjs"
+    "list-articles": "node scripts/list-articles.mjs",
+    "img-webp": "node scripts/img-to-webp.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.40.0",

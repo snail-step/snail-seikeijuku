@@ -34,6 +34,7 @@ EPS: ![eps](./images/tsmc-26q1-eps.png)
 
 ![income](./images/tsmc-26q1-income.png)
 
+#### revenue by platform
 ![revenue-by-platform](./images/tsmc-26q1-revenue-by-platform.png)
 
 ![revenue-by-technology](./images/tsmc-26q1-revenue-by-technology.png)
