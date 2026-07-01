@@ -1,28 +1,23 @@
 # 蝸牛政經塾 - snail-seikeijuku
 
-用 Markdown 寫作的政經評論部落格，使用 [Astro](https://astro.build) +
+用 Markdown 寫作的學習部落格，使用 [Astro](https://astro.build) +
 [Starlight](https://starlight.astro.build)，套用
 [Lucode Starlight 主題](https://github.com/lucas-labs/lucode-starlight-theme)
 （shadcn/ui 風格），部署在 Vercel。
 
-## 怎麼寫文章
-
-在 [src/content/docs/posts/articles](https://github.com/snail-step/snail-seikeijuku/tree/main/src/content/docs/posts/articles) 底下
-
-1. 新增一個 `.md` 檔
-2. 最上面放 標題、小標題（frontmatter）：
-```md
----
-title: 文章標題
-description: 一句話說明這篇文章。
 ---
 
-正文用 Markdown 寫……
-```
+website: https://snail-seikeijuku.vercel.app/posts/articles/knowledge-map/
 
-3. commit（存檔）後，文章會自動出現在側邊欄。
+## 📌 開始寫文章！用 GitHub 網頁介面編輯
 
-# 以下 for development
+請看完整教學：[如何寫文章](如何寫文章.md)。
+
+<br/>
+<br/>
+<br/>
+
+# 以下 for 開發
 
 ## Local
 
