@@ -1,0 +1,133 @@
+---
+// External link card. Fetches the target URL at build time to read its
+// <title> (og:title preferred) and favicon, rendered as a nofollow link.
+// Usage (in .mdx, adjust the relative path to your depth):
+//   import BookmarkCard from '../../../../components/BookmarkCard.astro';
+//   <BookmarkCard href="https://example.com/foo" />
+//   <BookmarkCard href="..." title="Custom title" />  // skips fetch
+
+interface Props {
+    href: string;
+    title?: string;
+}
+
+const { href, title: titleProp } = Astro.props;
+
+const domain = (() => {
+    try {
+        return new URL(href).hostname;
+    } catch {
+        return href;
+    }
+})();
+
+// Decode the handful of HTML entities common in titles.
+function decodeEntities(s: string): string {
+    return s
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#0?39;|&apos;/g, "'")
+        .replace(/&#(\d+);/g, (_, d) => String.fromCharCode(Number(d)));
+}
+
+// Read an attribute value from a tag string (quoted or unquoted).
+function attr(tag: string, name: string): string | undefined {
+    const m = tag.match(new RegExp(`\\b${name}=(?:["']([^"']*)["']|([^\\s"'>]+))`, 'i'));
+    return m ? (m[1] ?? m[2]) : undefined;
+}
+
+let title = titleProp?.trim() ?? '';
+
+// Fetch at build time (needed for favicon even when title is provided).
+let favicon = '';
+try {
+    const res = await fetch(href, {
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; SnailSeikeijukuBot/1.0)' },
+        signal: AbortSignal.timeout(5000),
+    });
+    if (res.ok) {
+        const html = await res.text();
+        const base = res.url || href; // resolve relative paths against post-redirect URL
+
+        if (!title) {
+            const og = html.match(
+                /<meta[^>]+(?:property|name)=["']og:title["'][^>]*content=["']([^"']+)["']/i,
+            ) ?? html.match(
+                /<meta[^>]+content=["']([^"']+)["'][^>]*(?:property|name)=["']og:title["']/i,
+            );
+            const tag = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+            title = decodeEntities((og?.[1] ?? tag?.[1] ?? '').trim());
+        }
+
+        // Extract favicon from <link rel="...icon...">, preferring apple-touch-icon.
+        const iconTags = [...html.matchAll(/<link\b[^>]*>/gi)]
+            .map((m) => m[0])
+            .filter((t) => /icon/i.test(attr(t, 'rel') ?? ''));
+        const picked =
+            iconTags.find((t) => /apple-touch-icon/i.test(attr(t, 'rel') ?? '')) ?? iconTags[0];
+        const iconHref = picked ? attr(picked, 'href') : undefined;
+        if (iconHref) {
+            try {
+                favicon = new URL(iconHref, base).href;
+            } catch {}
+        }
+    }
+} catch {}
+
+if (!title) title = domain;
+
+// Fall back to /favicon.ico; a broken image is removed by the onerror handler.
+if (!favicon) {
+    try {
+        favicon = `${new URL(href).origin}/favicon.ico`;
+    } catch {}
+}
+---
+
+<a class="link-card" href={href} rel="nofollow noopener noreferrer" target="_blank">
+    {favicon && (
+        <img
+            class="link-card__icon"
+            src={favicon}
+            alt=""
+            width="20"
+            height="20"
+            loading="lazy"
+            onerror="this.remove()"
+        />
+    )}
+    <span class="link-card__title">{title}</span>
+    <span class="link-card__domain">{domain}</span>
+</a>
+
+<style>
+    .link-card {
+        display: inline;
+        padding: 0 0.2rem;
+        border-radius: 3px;
+        color: var(--sl-color-white);
+        background: var(--sl-color-gray-6, transparent);
+        transition: background 0.15s ease;
+        text-decoration: none;
+    }
+    .link-card:hover {
+        background: var(--gray-7);
+    }
+    .link-card__icon {
+        vertical-align: text-bottom;
+        margin-right: 0.35em;
+        border-radius: 4px;
+        display: inline-block;
+    }
+    .link-card__title {
+        word-break: break-word;
+        border-bottom: solid var(--gray-4) 1px;
+    }
+    .link-card__domain {
+        margin-left: 0.4em;
+        font-size: 0.4em;
+        color: var(--sl-color-gray-3);
+    }
+</style>
