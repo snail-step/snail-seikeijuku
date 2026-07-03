@@ -43,6 +43,13 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 
 <Drawer />
 
+<script>
+  import * as Sentry from '@sentry/astro';
+
+  Sentry.logger.info('User triggered test log', { log_source: 'sentry_test' });
+  Sentry.metrics.count('test_metric', 1);
+</script>
+
 <style>
     [data-slot='layout'] {
         /* group/layout relative z-10 flex min-h-svh flex-col bg-background */

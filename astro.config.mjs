@@ -1,10 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { loadEnv } from 'vite';
 import starlight from '@astrojs/starlight';
 import sentry from '@sentry/astro';
 import lucode from 'lucode-starlight';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+
+const env = loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), '');
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,12 +19,11 @@ export default defineConfig({
   },
   integrations: [
     sentry({
-      dsn: process.env.PUBLIC_SENTRY_DSN,
-      enabled: Boolean(process.env.PUBLIC_SENTRY_DSN),
+      enabled: Boolean(env.PUBLIC_SENTRY_DSN),
       sourceMapsUploadOptions: {
-        project: process.env.SENTRY_PROJECT,
-        org: process.env.SENTRY_ORG,
-        authToken: process.env.SENTRY_AUTH_TOKEN,
+        project: env.SENTRY_PROJECT,
+        org: env.SENTRY_ORG,
+        authToken: env.SENTRY_AUTH_TOKEN,
       },
     }),
     starlight({
@@ -64,11 +66,11 @@ export default defineConfig({
       sidebar: [
         // 未分類文章（posts/articles 內自動列出，依各篇 frontmatter 的 sidebar.order 排序）
         { autogenerate: { directory: 'posts/articles' } },
-        // 分類資料夾：名詞解釋（posts/noun-explanation 內自動列出）
+        // 分類資料夾：讀書會（posts/weekly 內自動列出）
         {
-          label: '🔠 名詞解釋',
+          label: '📌 讀書會',
           collapsed: false,
-          items: [{ autogenerate: { directory: 'posts/noun-explanation' } }],
+          items: [{ autogenerate: { directory: 'posts/weekly' } }],
         },
         // 分類資料夾：讀書會（posts/mit-investments-course 內自動列出）
         {
@@ -81,14 +83,19 @@ export default defineConfig({
           collapsed: false,
           items: [{ autogenerate: { directory: 'posts/channel' } }],
         },
-        // 分類資料夾：讀書會（posts/weekly 內自動列出）
+        // 分類資料夾：名詞解釋（posts/noun-explanation 內自動列出）
         {
-          label: '📌 讀書會',
+          label: '🔠 名詞解釋',
           collapsed: false,
-          items: [{ autogenerate: { directory: 'posts/weekly' } }],
+          items: [{ autogenerate: { directory: 'posts/noun-explanation' } }],
         },
         {
-          label: '✏️ (好難 先放棄) MIT投資學',
+          label: '其他/草稿筆記',
+          collapsed: false,
+          items: [{ autogenerate: { directory: 'posts/other-scripts' } }],
+        },
+        {
+          label: '(好難 先放棄) MIT投資學',
           collapsed: true,
           items: [{ autogenerate: { directory: 'posts/mit-investments-course' } }],
         },

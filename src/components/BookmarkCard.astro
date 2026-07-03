@@ -1,10 +1,13 @@
 ---
-// External link card. Fetches the target URL at build time to read its
-// <title> (og:title preferred) and favicon, rendered as a nofollow link.
+// External link card, rendered as a nofollow link.
+// Title comes from og:title/<title> via a cached build-time fetch (see
+// src/utils/bookmark-title.ts); passing `title` skips the fetch entirely.
+// Favicon uses Google's favicon service, so no page fetch is needed for it.
 // Usage (in .mdx, adjust the relative path to your depth):
 //   import BookmarkCard from '../../../../components/BookmarkCard.astro';
 //   <BookmarkCard href="https://example.com/foo" />
-//   <BookmarkCard href="..." title="Custom title" />  // skips fetch
+//   <BookmarkCard href="..." title="Custom title" />
+import { getBookmarkTitle } from '../utils/bookmark-title';
 
 interface Props {
     href: string;
@@ -21,83 +24,20 @@ const domain = (() => {
     }
 })();
 
-// Decode the handful of HTML entities common in titles.
-function decodeEntities(s: string): string {
-    return s
-        .replace(/&amp;/g, '&')
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&quot;/g, '"')
-        .replace(/&#0?39;|&apos;/g, "'")
-        .replace(/&#(\d+);/g, (_, d) => String.fromCharCode(Number(d)));
-}
-
-// Read an attribute value from a tag string (quoted or unquoted).
-function attr(tag: string, name: string): string | undefined {
-    const m = tag.match(new RegExp(`\\b${name}=(?:["']([^"']*)["']|([^\\s"'>]+))`, 'i'));
-    return m ? (m[1] ?? m[2]) : undefined;
-}
-
-let title = titleProp?.trim() ?? '';
-
-// Fetch at build time (needed for favicon even when title is provided).
-let favicon = '';
-try {
-    const res = await fetch(href, {
-        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; SnailSeikeijukuBot/1.0)' },
-        signal: AbortSignal.timeout(5000),
-    });
-    if (res.ok) {
-        const html = await res.text();
-        const base = res.url || href; // resolve relative paths against post-redirect URL
-
-        if (!title) {
-            const og = html.match(
-                /<meta[^>]+(?:property|name)=["']og:title["'][^>]*content=["']([^"']+)["']/i,
-            ) ?? html.match(
-                /<meta[^>]+content=["']([^"']+)["'][^>]*(?:property|name)=["']og:title["']/i,
-            );
-            const tag = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
-            title = decodeEntities((og?.[1] ?? tag?.[1] ?? '').trim());
-        }
-
-        // Extract favicon from <link rel="...icon...">, preferring apple-touch-icon.
-        const iconTags = [...html.matchAll(/<link\b[^>]*>/gi)]
-            .map((m) => m[0])
-            .filter((t) => /icon/i.test(attr(t, 'rel') ?? ''));
-        const picked =
-            iconTags.find((t) => /apple-touch-icon/i.test(attr(t, 'rel') ?? '')) ?? iconTags[0];
-        const iconHref = picked ? attr(picked, 'href') : undefined;
-        if (iconHref) {
-            try {
-                favicon = new URL(iconHref, base).href;
-            } catch {}
-        }
-    }
-} catch {}
-
-if (!title) title = domain;
-
-// Fall back to /favicon.ico; a broken image is removed by the onerror handler.
-if (!favicon) {
-    try {
-        favicon = `${new URL(href).origin}/favicon.ico`;
-    } catch {}
-}
+const title = titleProp?.trim() || (await getBookmarkTitle(href)) || domain;
+const favicon = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=32`;
 ---
 
 <a class="link-card" href={href} rel="nofollow noopener noreferrer" target="_blank">
-    {favicon && (
-        <img
-            class="link-card__icon"
-            src={favicon}
-            alt=""
-            width="20"
-            height="20"
-            loading="lazy"
-            onerror="this.remove()"
-        />
-    )}
+    <img
+        class="link-card__icon"
+        src={favicon}
+        alt=""
+        width="20"
+        height="20"
+        loading="lazy"
+        onerror="this.remove()"
+    />
     <span class="link-card__title">{title}</span>
     <span class="link-card__domain">{domain}</span>
 </a>
