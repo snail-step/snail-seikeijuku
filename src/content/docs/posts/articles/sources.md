@@ -18,3 +18,5 @@ sidebar:
 * <a href="https://ic.tpex.org.tw/" rel="nofollow noopener noreferrer" target="_blank">產業鏈（證交所-證券櫃檯買賣中心）</a> `ic.tpex.org.tw`
 
 * <a href="https://www.yuantaetfs.com/tradeInfo/pcf/0050" rel="nofollow noopener noreferrer" target="_blank">0050 申購買回清單</a> `www.yuantaetfs.com`
+
+* https://finmoconf.diveinvest.net/industry
