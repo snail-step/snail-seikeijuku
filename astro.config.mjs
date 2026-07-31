@@ -90,6 +90,11 @@ export default defineConfig({
           items: [{ autogenerate: { directory: 'posts/noun-explanation' } }],
         },
         {
+          label: '✏️ 技術分析',
+          collapsed: false,
+          items: [{ autogenerate: { directory: 'posts/technical-analysis' } }],
+        },
+        {
           label: '其他/草稿筆記',
           collapsed: false,
           items: [{ autogenerate: { directory: 'posts/other-scripts' } }],

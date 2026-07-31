@@ -1,0 +1,43 @@
+---
+title: 為什麼要進行證券分析？
+description: 技術分析
+head:
+  - tag: meta
+    attrs:
+      name: robots
+      content: noindex, nofollow
+---
+
+import BookmarkCard from '../../../../components/BookmarkCard.astro';
+import { Badge, Aside } from '@astrojs/starlight/components';
+
+<Aside type="note" title="本系列文章參考：">
+免費、圖例最清楚，型態和指標的教科書級圖庫
+
+<BookmarkCard title="Technical Analysis | StockCharts" href="https://chartschool.stockcharts.com/table-of-contents/overview" />
+
+</Aside>
+
+
+
+## **證券分析的目的與挑戰**
+華爾街有許多分析師與基金經理人試圖擊敗市場，但統計顯示約 **75% 的股票型共同基金績效低於 S&P 500 指數**。這引發了一個根本問題：個人投資人是否該直接選擇指數基金？
+
+
+## **三大投資學派觀點**
+* **基本面分析師（Fundamental Analyst）：** 認為透過分析公司策略、管理層、財務數據與產品等資訊，能找出被低估的股票並擊敗市場，通常認為技術分析無太大價值。
+* **技術分析師（Technical Analyst）：** 相信圖表、成交量、動能與數學指標包含關鍵訊息，認為基本面數據對於預測短期走勢幫助有限。
+* **隨機漫步者（Random Walkers）：** 認為任何試圖戰勝市場的努力都是徒勞無功的，價格變動本質上是隨機的。
+
+
+
+## **高效市場假說的三種形式對應**
+* **強式效率（Strong Form）— 對應純技術分析者：** 認為當前價格已反映**所有公開與未公開**的訊息。
+* **半強式效率（Semi-Strong Form）— 對應隨機漫步理論：** 認為價格反映所有**已公開**的訊息（如財報、SEC 文件），一旦訊息公開，價格會瞬間調整，無法靠公開資訊獲得超額利潤。
+* **弱式效率（Weak Form）— 對應基本面分析者：** 認為當前價格僅反映**過去的價格歷史**，無法用歷史價格預測未來，但可透過基本面模型評估出真實價值，找出市場定價偏差。
+
+
+
+## **市場現狀與實例**
+* 許多學術界人士認為現代市場偏向**半強式效率**，新訊息（例如財報指引）能極快地反映在股價上。
+* 文章以 **Lyft**（財報指引不佳導致股價大跌）與 **Nvidia**（強勁指引帶動股價跳空大漲）為例，說明新資訊如何以非隨機的方式迅速改變股票價格。
