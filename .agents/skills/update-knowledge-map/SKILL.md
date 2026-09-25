@@ -1,6 +1,13 @@
 ---
-description: 掃描所有文章並更新 KnowledgeMap.astro 的知識地圖大綱
+name: "update-knowledge-map"
+description: "掃描所有文章並更新 KnowledgeMap.astro 的知識地圖大綱"
 ---
+
+# update-knowledge-map
+
+所有指令皆從專案根目錄執行。
+
+## 執行步驟
 
 執行 `npm run list-articles` 取得目前所有文章的 slug/title/description 清單。
 

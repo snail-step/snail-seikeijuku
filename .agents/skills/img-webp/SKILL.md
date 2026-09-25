@@ -1,6 +1,13 @@
 ---
-description: 把上傳的 png/jpg 壓縮轉成 webp，並自動更新 mdx 引用
+name: "img-webp"
+description: "把上傳的 png/jpg 壓縮轉成 webp，並自動更新 mdx 引用"
 ---
+
+# img-webp
+
+所有指令皆從專案根目錄執行。
+
+## 執行步驟
 
 執行 `npm run img-webp`（若使用者在指令後給了路徑，則附加為參數：`npm run img-webp -- <路徑>`）。
 

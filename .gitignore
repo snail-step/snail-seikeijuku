@@ -20,5 +20,5 @@ pnpm-debug.log*
 *map.txt
 
 .claude/*
-!.claude/commands/
+!.claude/skills/
 !.claude/launch.json
