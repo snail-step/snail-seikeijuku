@@ -79,7 +79,7 @@ export default defineConfig({
           items: [{ autogenerate: { directory: 'posts/finance-reports' } }],
         },
         {
-          label: '✏️ 頻道整理',
+          label: '✏️ 專題/時事分析',
           collapsed: false,
           items: [{ autogenerate: { directory: 'posts/channel' } }],
         },

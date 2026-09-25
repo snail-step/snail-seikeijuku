@@ -1,9 +1,11 @@
 ---
-title: 融資融券
+title: 融資融券：7 月底跌幅分析
 description: 介紹
 ---
-
+import DocLink from '../../../../components/DocLink.astro';
 import BookmarkCard from '../../../../components/BookmarkCard.astro';
+import { Badge } from '@astrojs/starlight/components';
+
 
 :::tip[閱畢測驗 TEST！]
 <details>
@@ -47,16 +49,17 @@ import BookmarkCard from '../../../../components/BookmarkCard.astro';
 看數據：
 * <BookmarkCard href="https://tw.stock.yahoo.com/margin-balance" />
 * <BookmarkCard href="https://www.wantgoo.com/stock/day-trading-volume-rank" title="現股當沖成交量排行" />
-* <BookmarkCard href="https://histock.tw/stock/three.aspx?m=mg&s=bsu" /> 
+* <BookmarkCard href="https://www.wantgoo.com/stock/margin-trading/lending/increase-decrease-rank" title="個股 融資/融券排行" /> 
+   * <BookmarkCard href="https://www.twse.com.tw/IIH2/zh/compare/margin.html"/> 
+   * 同上內容，另一個網站 <BookmarkCard href="https://histock.tw/stock/three.aspx?m=mg&s=bsu" /> 
 
-todo: 券資比排行？
-補圖
-待讀：
-
+延伸閱讀：
 * <BookmarkCard href="https://www.gorich.com.tw/blog/2021/07/14/%E7%B1%8C%E7%A2%BC%E9%9D%A2%E7%9A%84%E9%97%9C%E9%8D%B5%E6%8C%87%E6%A8%99%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E8%9E%8D%E8%B3%87%E3%80%81%E8%9E%8D%E5%88%B8%E3%80%81%E5%8D%83%E5%BC%B5%E5%A4%A7%E6%88%B6/" />
-* <BookmarkCard href="https://www.investopedia.com/terms/m/margin.asp" />
-* <BookmarkCard href="https://www.investopedia.com/terms/s/shortselling.asp" />
 * <BookmarkCard href="https://www.adss.com/en/howtotrade/learn-how-to-spot-a-short-squeeze/" />
+
+
+
+<Badge text="以下內容為 8/22 撰寫" variant="default" />
 
 ## 科普：融資（Buying on Margin）與融券（Short Selling）？
 
@@ -137,9 +140,16 @@ todo: 券資比排行？
 
 然後 7/21–22 融資又 +74 億、+63 億——散戶第二次搶反彈,又失敗。這種「跌–加碼–再跌」的鋸齒，就是主跌段拖長的原因：每次反彈都有新槓桿進場，然後變成下一波賣壓。
 
+
+-> <DocLink slug="posts/noun-explanation/margin-trading/#券資比公式與多空部位判讀" />
+
 ### 階段四（7/28–7/30）：斷頭高潮 = 底部訊號
 
-三天融資連砍 -231、**-385**、-131 億，合計 -748 億——7/29 的單日 -385 億是全表最大減幅，這就是**斷頭高潮（capitulation）**。同時當沖總量在 7/29–30 爆到 448 萬張的極端值（平日約 250–300 萬），代表盤中多空絞殺到頂。
+> https://tw.stock.yahoo.com/margin-balance
+
+![margin-trading-date](./images/margin-trading-date.webp)
+
+7/28–7/30 三天融資連砍 -231、**-385**、-131 億，合計 -748 億——7/29 的單日 -385 億是全表最大減幅，這就是**斷頭高潮（capitulation）**。同時當沖總量在 7/29–30 爆到 448 萬張的極端值（平日約 250–300 萬），代表盤中多空絞殺到頂。
 
 對照個股：金像電正是 7/30 見 705 低點。**融資的最大減幅日，領先指數低點 1–2 天**——這與 Leopold 基金 7/29–30 被迫整批出清是同一時間窗口，全球去槓桿和台股散戶斷頭在同三天內共振出清。
 
@@ -164,6 +174,9 @@ todo: 券資比排行？
 **2. 融資是「反向情緒指標」，但只在極端值有效。** 平日的增減是雜訊；有訊號的是三種極端：高檔鈍化（階段一）、下跌中逆勢增加（接刀警訊）、單日史詩級減幅（底部訊號）。
 
 **3. 融資餘額對 0050 是「落後指標」但對「底部確認」是領先指標。** 它跌得比指數慢（散戶會凹單），但它的出清高潮比指數底部早 1–2 天出現。
+
+<Badge text="蝸牛觀察：這次7月底的TWII漲跌，跟券資線型長得差不多，並沒有「領先指標」的功能。" variant="caution" />
+
 
 ---
 
