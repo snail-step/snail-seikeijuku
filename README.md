@@ -48,10 +48,9 @@ npm run preview  # 預覽 build 結果
 
 專案的共用 skill 統一維護在 [.agents/skills/](.agents/skills/)，入口與維護規則見 [AGENTS.md](AGENTS.md)。
 
-- [img-webp](.agents/skills/img-webp/SKILL.md)：把 PNG/JPG 壓縮轉成 WebP，並更新 MDX 引用。
 - [update-knowledge-map](.agents/skills/update-knowledge-map/SKILL.md)：掃描文章，更新 `src/components/KnowledgeMap.astro` 的知識地圖大綱。
 
-Claude Code 透過 `.claude/skills/` 中的相對符號連結讀取同一份 skill，仍可使用 `/img-webp`（可附圖片路徑）與 `/update-knowledge-map`。其他 agent 若未自動探索 `.agents/skills/` 或讀取 `AGENTS.md`，可直接要求它讀取對應的 `SKILL.md` 並執行。
+圖片轉 WebP 使用個人全域的 `img-webp` skill；本專案也保留 `npm run img-webp` 指令。Claude Code 透過 `.claude/skills/` 中的相對符號連結讀取專案 skill，可使用 `/update-knowledge-map`。其他 agent 若未自動探索 `.agents/skills/` 或讀取 `AGENTS.md`，可直接要求它讀取對應的 `SKILL.md` 並執行。
 
 新增 skill 時，在 `.agents/skills/<skill-name>/SKILL.md` 撰寫內容，frontmatter 包含 `name`、`description`，並更新 `AGENTS.md` 的索引。從專案根目錄新增 Claude 的入口：
 
