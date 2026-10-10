@@ -1,0 +1,75 @@
+---
+// 在含 Mermaid 程式碼區塊的文章中載入；收合的答案展開後才繪圖。
+---
+
+<script>
+  import mermaid from 'mermaid';
+
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: 'strict',
+    theme: 'neutral',
+    look: 'classic',
+    htmlLabels: false,
+    fontFamily: 'Arial, "Noto Sans TC", sans-serif',
+    themeVariables: { xyChart: { plotColorPalette: '#2563eb' } },
+    flowchart: { htmlLabels: false, padding: 4, rankSpacing: 12 },
+    xyChart: { width: 560, height: 240 },
+  });
+
+  let sequence = 0;
+  let queue = Promise.resolve();
+
+  async function renderVisibleDiagrams() {
+    await document.fonts.ready;
+    const blocks = document.querySelectorAll<HTMLPreElement>('pre[data-language="mermaid"]');
+
+    for (const block of blocks) {
+      if (!block.isConnected || block.closest('details:not([open])')) continue;
+      // Expressive Code 以 div 包住每行，整段 textContent 不會保留換行。
+      const lines = block.querySelectorAll<HTMLElement>('.ec-line .code');
+      const source = lines.length
+        ? Array.from(lines, (line) => line.textContent ?? '').join('\n')
+        : block.querySelector('code')?.textContent;
+      if (!source) continue;
+
+      try {
+        const { svg } = await mermaid.render(`article-mermaid-${sequence++}`, source);
+        const diagram = document.createElement('div');
+        diagram.className = 'article-mermaid';
+        diagram.innerHTML = svg;
+        (block.closest('.expressive-code') ?? block).replaceWith(diagram);
+      } catch (error) {
+        // 保留原始定義，避免繪圖失敗時整段內容消失。
+        console.error('Mermaid diagram could not be rendered:', error);
+      }
+    }
+  }
+
+  function render() {
+    queue = queue.then(renderVisibleDiagrams);
+  }
+
+  render();
+  document.addEventListener('astro:page-load', render);
+  document.addEventListener('toggle', (event) => {
+    if (event.target instanceof HTMLDetailsElement && event.target.open) render();
+  }, true);
+</script>
+
+<style is:global>
+  .article-mermaid {
+    margin-block: 1rem;
+    padding: 0.75rem;
+    overflow-x: auto;
+    background: #fff;
+    color: #222;
+  }
+
+  .article-mermaid > svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-inline: auto;
+  }
+</style>

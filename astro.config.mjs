@@ -13,6 +13,12 @@ const env = loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), '');
 export default defineConfig({
   // 部署到 Vercel 後，記得把這裡換成你的正式網域
   site: 'https://snail-seikeijuku.vercel.app',
+  vite: {
+    optimizeDeps: {
+      // 啟動時先預打包 Mermaid，避免展開答案才載入流程圖時快取失效。
+      include: ['mermaid'],
+    },
+  },
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],

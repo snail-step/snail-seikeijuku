@@ -19,6 +19,7 @@
     "lucode-starlight": "^0.1.6",
     "markmap-lib": "^0.18.12",
     "markmap-view": "^0.18.12",
+    "mermaid": "^11.17.2",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
     "sharp": "^0.34.2"
