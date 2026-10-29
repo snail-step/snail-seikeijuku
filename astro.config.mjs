@@ -106,6 +106,11 @@ export default defineConfig({
           items: [{ autogenerate: { directory: 'posts/other-scripts' } }],
         },
         {
+          label: '科技新聞 - 每3日更',
+          collapsed: false,
+          items: [{ autogenerate: { directory: 'posts/tech-news-summary' } }],
+        },
+        {
           label: '(好難 先放棄) MIT投資學',
           collapsed: true,
           items: [{ autogenerate: { directory: 'posts/mit-investments-course' } }],
