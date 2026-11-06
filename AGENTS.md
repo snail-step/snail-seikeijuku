@@ -5,3 +5,4 @@
 - 依文章清單更新知識地圖：讀取 [.agents/skills/update-knowledge-map/SKILL.md](.agents/skills/update-knowledge-map/SKILL.md)。
 - 新增或修改 skill 時只維護 `.agents/skills/` 的內容；其他 agent 的專屬目錄只放指向共用來源的連結，不複製流程。
 - Claude Code 的 `.claude/skills/<skill-name>` 使用相對符號連結指向 `../../.agents/skills/<skill-name>`。新增 skill 時一併新增連結與此處的索引。
+- 新增或更新文章頂部的「閱畢測驗」（預設 4～5 題 QA、tip 與可展開解答）：讀取 [.agents/skills/add-reading-quiz/SKILL.md](.agents/skills/add-reading-quiz/SKILL.md)。
