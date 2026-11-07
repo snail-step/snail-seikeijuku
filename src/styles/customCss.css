@@ -35,6 +35,12 @@
    color: var(--sl-color-white);
 }
 
+.level-h4 h4 {
+   font-size: 20px;
+   font-weight: bold;
+   color: var(--sl-color-gray-4);
+}
+
 /* 表格欄位過多時，固定每欄最小寬度，超出寬度時改為左右滾動，
    而不是把文字擠在一起。 */
 .sl-markdown-content :is(th, td):not(:where(.not-content *)) {
