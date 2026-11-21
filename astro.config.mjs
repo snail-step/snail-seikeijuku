@@ -5,6 +5,7 @@ import starlight from '@astrojs/starlight';
 import sentry from '@sentry/astro';
 import lucode from 'lucode-starlight';
 import remarkMath from 'remark-math';
+import remarkCjkFriendly from 'remark-cjk-friendly/parseOnly';
 import rehypeKatex from 'rehype-katex';
 
 const env = loadEnv(process.env.NODE_ENV ?? 'production', process.cwd(), '');
@@ -20,7 +21,7 @@ export default defineConfig({
     },
   },
   markdown: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkCjkFriendly, remarkMath],
     rehypePlugins: [rehypeKatex],
   },
   integrations: [
